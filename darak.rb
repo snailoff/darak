@@ -69,6 +69,12 @@ class Darak
 		@loaded = @db.get_first_row("select korean, english, japanese, chinese, english_extra, japanese_extra, chinese_extra from daraks  order by random() limit 1;" )
 		render()
 	end
+
+	def mode=(m)
+		@mode = m
+
+		render() unless @loaded.empty?
+	end
 	
 	def print
 		puts "\n-- rendered (mode : #{@mode}) "
